@@ -1,0 +1,57 @@
+<form nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" 
+                     [nzXs]="24" 
+                      nzRequired 
+                      nzFor="rate">Розряд</nz-form-label>
+      <nz-form-control nzErrorTip="Введіть розряд" 
+                       [nzSm]="14" 
+                       [nzXs]="24">
+          <input nz-input 
+                 type="number" 
+                 min="0" 
+                 max="15" 
+                 [(ngModel)]="rate.rate" 
+                 id="rate" 
+                 [ngModelOptions]="{standalone: true}"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" 
+                     [nzXs]="24" 
+                     nzRequired 
+                     nzFor="money">Ставка</nz-form-label>
+      <nz-form-control nzErrorTip="Введіть ставку" 
+                       [nzSm]="14" 
+                       [nzXs]="24">
+          <input nz-input 
+                 id="money" 
+                 type="number" 
+                 min="0" 
+                 max="9999" 
+                 [(ngModel)]="rate.money" 
+                 [ngModelOptions]="{standalone: true}"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="10" 
+                       [nzXs]="24" 
+                       nzFor="title">Педагогічне звання</nz-form-label>
+        <nz-form-control nzErrorTip="Введіть педагогічне звання" 
+                         [nzSm]="14" 
+                         [nzXs]="24">
+            <input nz-input 
+                   id="title" 
+                   [(ngModel)]="rate.title" 
+                   [ngModelOptions]="{standalone: true}"/>
+        </nz-form-control>
+      </nz-form-item>
+</form>
+<div *nzModalFooter>
+    <button nz-button 
+            nzType="default" 
+            (click)="save()">Зберегти</button>
+    <button nz-button 
+            nzType="primary" 
+            (click)="close()">Закрити</button>
+</div>

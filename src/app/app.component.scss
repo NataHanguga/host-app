@@ -1,0 +1,67 @@
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  & ::ng-deep {
+    .ant-calendar-picker {
+      width: 100%;
+      padding: 0 5px;
+    }
+  }
+}
+
+.app-layout {
+  height: 100vh;
+  width: 100vw;
+}
+
+.dark {
+  color: #fff;
+}
+
+.menu-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+}
+
+.header-trigger {
+  height: 64px;
+  padding: 20px 24px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all .3s,padding 0s;
+}
+
+.sidebar-logo {
+  line-height: 64px;
+}
+
+nz-content {
+  margin: 24px;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  height: 100%;
+}
+
+
+:host ::ng-deep {
+  .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ul {
+      flex: 1;
+    }
+
+    nz-switch {
+      margin: 10px 5px;
+    }
+  }
+}
