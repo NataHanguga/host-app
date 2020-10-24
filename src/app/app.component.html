@@ -1,0 +1,65 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    [nzTheme]="isTheme"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo" [ngClass]="isTheme">
+      {{ isCollapsed ? "TC" : ("Тарифікаційні списки" | uppercase) }}
+      <i class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed" ></i>
+    </div>
+    <ul
+      nz-menu
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+      [nzTheme]="isTheme">
+      <li nz-submenu nzOpen nzTitle="Налаштування" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/rate">Тарифна ставка</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/position">Додаткова посада</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/teachers">Вчителі</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Документи" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/tarifical-list">Тарифікаційний список</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <nz-date-picker
+      [(ngModel)]="date"
+      (ngModelChange)="setDate($event)"
+    ></nz-date-picker>
+    <div>
+      <span [ngClass]="isTheme" *ngIf="!isCollapsed">Тема</span>
+      <nz-switch
+        [(ngModel)]="theme"
+        nzCheckedChildren="Темна"
+        nzUnCheckedChildren="Світла">
+        <span checked>Темна</span>
+        <span unchecked>Світла</span>
+      </nz-switch>
+    </div>
+  </nz-sider>
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

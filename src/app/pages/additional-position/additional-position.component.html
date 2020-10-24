@@ -1,0 +1,31 @@
+<nz-table #table 
+          [nzData]="list" 
+          nzShowPagination="false" 
+          [nzLoading]="loading">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Посада</th>
+      <th>Розряд</th>
+      <th>Посадовий оклад</th>
+      <th nzWidth="100px">Відсоток для додаткових виплат</th>
+      <th>Кількість</th>
+      <th class="action" (click)="opensModal()">Додати</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of table.data; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ data?.name }}</td>
+      <td>{{ data?.rate?.rate }}</td>
+      <td>{{ data?.rate?.money}}</td>
+      <td>{{ data?.percent }}</td>
+      <td>{{ data?.amount }}</td>
+      <td class="action">
+        <a (click)="opensModal(data)">Змінити</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a (click)="deletePosition(data)">Видалити</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

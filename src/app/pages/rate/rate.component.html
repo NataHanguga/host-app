@@ -1,0 +1,26 @@
+<h2>Тарифні ставки</h2>
+<nz-table #table 
+          [nzData]="list" 
+          nzShowPagination="false" 
+          [nzLoading]="loading">
+    <thead>
+      <tr>
+        <th>Розряд</th>
+        <th>Тарифна ставка</th>
+        <th>Педагогічне звання</th>
+        <th class="action" (click)="openModal()">Додати</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of table.data">
+        <td>{{ data?.rate }}</td>
+        <td>{{ data?.money }}</td>
+        <td>{{ data?.title}}</td>
+        <td class="action">
+          <a (click)="openModal(data?.id)">Змінити</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="deleteRate(data)">Видалити</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

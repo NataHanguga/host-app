@@ -1,0 +1,45 @@
+<h2>Список вчителів</h2>
+<nz-table #table 
+          [nzData]="teacherList" 
+          [nzLoading]="loading" 
+          nzShowPagination="false"
+          [nzScroll]="{ x: '1024px'}">
+    <thead>
+      <tr>
+        <th nzWidth="40px">#</th>
+        <th nzLeft nzWidth="200px">Прізвище, імя та по батькові</th>
+        <th >Освіта</th>
+        <th >Посада, Категорія</th>
+        <th>Рік прохоження атестації</th>
+        <th>Розряд ЄТС</th>
+        <th>Викл години</th>
+        <th>Конц години</th>
+        <th>Педагогічне звання</th>
+        <th>Стаж</th>
+        <th class="action" 
+            (click)="openModal()"
+            nzRight
+        >Додати</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of table.data; let i = index">
+        <td nzWidth="40px">{{i+1}}</td>
+        <td nzLeft nzWidth="200px">{{data.name}}</td>
+        <td >{{data.education}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.year}}</td>
+        <td>{{data.rate.rate}}</td>
+        <td>{{data.teachHours}}</td>
+        <td>{{data.concertHours}}</td>
+        <td>{{data.pedagogicTitle?.label}}</td>
+        <td>{{data.expiriense}}</td>
+        <td class="action"
+            nzRight>
+          <a (click)="openModal(data.id)">Змінити</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="deleteTeacher(data)">Видалити</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>

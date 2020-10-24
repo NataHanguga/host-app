@@ -1,0 +1,39 @@
+<div class="header">
+  <h2>Тарифікаційний список</h2>
+  <button nz-button nzType="default" (click)="download()">Завантажити</button>
+</div>
+<nz-table #basicTable 
+          nzTableLayout="auto" 
+          [nzData]="teacherData?.items" 
+          nzShowPagination="false" 
+          [nzScroll]="{ x: '1100px'}">
+    <thead>
+      <tr>
+        <th *ngFor="let col of teacherData?.headers" nzWidth="90px">{{col}}</th>
+      </tr>
+      <tr>
+        <th *ngFor="let col of teacherData?.headers; let i = index" nzWidth="90px">{{i + 1}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.education}}</td>
+        <td>{{data.title}} {{data.year}}</td>
+        <td>{{data.rate}}</td>
+        <td>{{data.money}}</td>
+        <td>{{data.pedagogicTitle?.label}}</td>
+        <td>{{data.increase}}</td>
+        <td>{{data.monthTarifAndIncrease}}</td>
+        <td>{{data.expirience}}</td>
+        <td>{{data.expiriencePercent}}</td>
+        <td>{{data.yearsServiceAdding}}</td>
+        <td>{{data.twentyPercents}}</td>
+        <td>{{data.total}}</td>
+      </tr>
+      <tr>
+        <td *ngFor="let sum of teacherData?.sumRow" class="bold">{{sum}}</td>
+      </tr>
+    </tbody>
+  </nz-table>

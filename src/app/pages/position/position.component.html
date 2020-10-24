@@ -1,0 +1,14 @@
+<h2>Посади</h2>
+
+<nz-tabset [(nzSelectedIndex)]="selectedTab" 
+           (nzSelectedIndexChange)="saveTabIndexToLS()">
+
+  <nz-tab nzTitle="Керуючі посади">
+    <app-manager-position></app-manager-position>
+  </nz-tab>
+
+  <nz-tab nzTitle="Додатковий персонал">
+    <app-additional-position></app-additional-position>
+  </nz-tab>
+
+</nz-tabset>

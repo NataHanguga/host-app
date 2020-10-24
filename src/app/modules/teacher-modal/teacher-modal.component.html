@@ -1,0 +1,164 @@
+<form nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" 
+                     [nzXs]="24" 
+                      nzRequired 
+                      nzFor="name">Прізвище, ім'я та по батькові</nz-form-label>
+      <nz-form-control nzErrorTip="Введіть розряд" 
+                       [nzSm]="14" 
+                       [nzXs]="24">
+          <input nz-input 
+                 type="text" 
+                 id="name" 
+                 [(ngModel)]="teacher.name" 
+                 [ngModelOptions]="{standalone: true}"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="10" 
+                     [nzXs]="24" 
+                     nzRequired 
+                     nzFor="education">Освіта</nz-form-label>
+      <nz-form-control nzErrorTip="Введіть ставку"
+                       [nzSm]="14" 
+                       [nzXs]="24">
+        <nz-select [(ngModel)]="teacher.education" [ngModelOptions]="{standalone: true}" id="education">
+            <nz-option *ngFor="let item of educationList" 
+                        [nzValue]="item" 
+                        [nzLabel]="item"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+    <nz-form-label [nzSm]="10" 
+                    [nzXs]="24" 
+                    nzRequired 
+                    nzFor="expirience">Стаж роботи</nz-form-label>
+      <nz-form-control nzErrorTip="Введіть Стаж роботи" 
+                        [nzSm]="14" 
+                        [nzXs]="24">
+          <input nz-input 
+                  type="number" 
+                  id="expirience" 
+                  min="0"
+                  max="100"
+                  [(ngModel)]="teacher.expiriense" 
+                  [ngModelOptions]="{standalone: true}"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="10" 
+                       [nzXs]="24" 
+                       nzRequired 
+                       nzFor="title">Посада, Категорія</nz-form-label>
+        <nz-form-control nzErrorTip="Введіть посаду" 
+                         [nzSm]="14" 
+                         [nzXs]="24">
+            <nz-select [(ngModel)]="teacher.rate" [ngModelOptions]="{standalone: true}" (ngModelChange)="addRate($event)" id="title">
+                <nz-option *ngFor="let item of rateList" 
+                           [nzValue]="item.id" 
+                           [nzLabel]="item.title"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="10" 
+                       [nzXs]="24" 
+                        nzRequired 
+                        nzFor="year">Рік прохоження атестації</nz-form-label>
+        <nz-form-control nzErrorTip="Введіть рік прохоження атестації" 
+                         [nzSm]="14" 
+                         [nzXs]="24">
+            <input nz-input 
+                   type="number" 
+                   id="year" 
+                   min="2010"
+                   max="2030"
+                   [(ngModel)]="teacher.year" 
+                   [ngModelOptions]="{standalone: true}"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="10" 
+                       [nzXs]="24" 
+                        nzRequired 
+                        nzFor="teachHours">Викладацькі години</nz-form-label>
+        <nz-form-control nzErrorTip="Введіть рік прохоження атестації" 
+                         [nzSm]="14" 
+                         [nzXs]="24">
+            <input nz-input 
+                   type="number" 
+                   id="teachHours" 
+                   min="0"
+                   max="100"
+                   [(ngModel)]="teacher.teachHours" 
+                   [ngModelOptions]="{standalone: true}"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="10" 
+                       [nzXs]="24" 
+                        nzRequired 
+                        nzFor="concertHours">Концертмейстерські години</nz-form-label>
+        <nz-form-control nzErrorTip="Введіть рік прохоження атестації" 
+                         [nzSm]="14" 
+                         [nzXs]="24">
+            <input nz-input 
+                   type="number" 
+                   id="concertHours" 
+                   min="0"
+                   max="100"
+                   [(ngModel)]="teacher.concertHours" 
+                   [ngModelOptions]="{standalone: true}"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="10" 
+                       [nzXs]="24" 
+                       nzFor="pedagogicTitle">Педагогічне звання</nz-form-label>
+        <nz-form-control nzErrorTip="Введіть педагогічне звання" 
+                         [nzSm]="14" 
+                         [nzXs]="24">
+            <nz-select [(ngModel)]="teacher.pedagogicTitle" [ngModelOptions]="{standalone: true}" id="pedagogicTitle">
+                <nz-option *ngFor="let item of pedagogicTitleList" 
+                           [nzValue]="item" 
+                           [nzLabel]="item.label"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="10" 
+                       [nzXs]="24" 
+                       nzFor="managerTitle">Керуюча посада</nz-form-label>
+        <nz-form-control nzErrorTip="Введіть педагогічне звання" 
+                        [nzSm]="14" 
+                        [nzXs]="24">
+          <nz-select [(ngModel)]="teacher.managerPosition" [ngModelOptions]="{standalone: true}" id="managerTitle">
+            <nz-option *ngFor="let item of managerTitleList" 
+                        [nzValue]="item" 
+                        [nzLabel]="item.name"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <!-- <nz-form-item class="button-wrapper">
+        <span>Додати: </span>
+        <button nz-button 
+                nzType="link" 
+                (click)="togglePedagogicTitle()">Педагогічне звання</button>
+        <button nz-button 
+                nzType="link" 
+                (click)="toggleManagerTitle()">Керуючу посаду</button>
+        <button nz-button 
+                nzType="link">Завідуючу посаду</button>
+      </nz-form-item> -->
+
+</form>
+
+<div *nzModalFooter>
+    <button nz-button 
+            nzType="default" 
+            (click)="save()">Зберегти</button>
+    <button nz-button 
+            nzType="primary" 
+            (click)="close()">Закрити</button>
+</div>
